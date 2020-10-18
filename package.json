@@ -1,0 +1,23 @@
+{
+  "name": "zenn-tried-8projects",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/applego/zenn-tried-8projects.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/applego/zenn-tried-8projects/issues"
+  },
+  "homepage": "https://github.com/applego/zenn-tried-8projects#readme",
+  "dependencies": {
+    "zenn-cli": "^0.1.49"
+  }
+}
