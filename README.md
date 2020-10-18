@@ -1,1 +1,1 @@
-# zenn-tried-8projects
+# zenn-management
