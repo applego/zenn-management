@@ -1,5 +1,5 @@
 ---
-title: ''
+title: 'a'
 ---
 
 - org
