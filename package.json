@@ -18,6 +18,6 @@
   },
   "homepage": "https://github.com/applego/zenn-tried-8projects#readme",
   "dependencies": {
-    "zenn-cli": "^0.1.132"
+    "zenn-cli": "^0.1.137"
   }
 }
