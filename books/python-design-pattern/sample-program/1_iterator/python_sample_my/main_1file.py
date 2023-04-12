@@ -25,7 +25,7 @@ class Book:
         return self.name
 
 
-class MyBookShelf(Aggregate):
+class BookShelf(Aggregate):
     def __init__(self, maxsize: int):
         self.books = [None] * maxsize
         self.last = 0
@@ -42,11 +42,11 @@ class MyBookShelf(Aggregate):
 
     # Aggregate インターフェース?のiteratorメソッドを実装
     def iterator(self) -> Iterator:
-        return MyBookShelfIterator(self)
+        return BookShelfIterator(self)
 
 
-class MyBookShelfIterator(Iterator):
-    def __init__(self, book_shelf: MyBookShelf):
+class BookShelfIterator(Iterator):
+    def __init__(self, book_shelf: BookShelf):
         self.book_shelf = book_shelf
         self.index = 0
 
@@ -65,7 +65,7 @@ class MyBookShelfIterator(Iterator):
 
 
 def main():
-    book_shelf = MyBookShelf(4)
+    book_shelf = BookShelf(4)
     book_shelf.append_book(Book("Around the World in 80 Days"))
     book_shelf.append_book(Book("Bible"))
     book_shelf.append_book(Book("Cinderella"))

@@ -1,10 +1,10 @@
 # from book_shelf import BookShelf
-from book_shelf import MyBookShelf
+from book_shelf import BookShelf
 from book import Book
 
 
 def main():
-    book_shelf = MyBookShelf(4)
+    book_shelf = BookShelf(4)
     book_shelf.append_book(Book("Around the World in 80 Days"))
     book_shelf.append_book(Book("Bible"))
     book_shelf.append_book(Book("Cinderella"))

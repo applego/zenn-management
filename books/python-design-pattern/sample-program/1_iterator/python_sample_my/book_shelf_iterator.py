@@ -1,9 +1,9 @@
-# from book_shelf import MyBookShelf
+# from book_shelf import BookShelf
 from iterator import Iterator
 
 
-# def __init__(self, book_shelf: MyBookShelf):
-class MyBookShelfIterator(Iterator):
+# def __init__(self, book_shelf: BookShelf):
+class BookShelfIterator(Iterator):
     def __init__(self, book_shelf):
         self.book_shelf = book_shelf
         self.index = 0

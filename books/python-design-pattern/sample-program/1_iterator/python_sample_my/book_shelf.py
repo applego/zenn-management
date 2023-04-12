@@ -1,10 +1,10 @@
 from book import Book
-from book_shelf_iterator import MyBookShelfIterator
+from book_shelf_iterator import BookShelfIterator
 from iterator import Iterator
 from aggregate import Aggregate
 
 
-class MyBookShelf(Aggregate):
+class BookShelf(Aggregate):
     def __init__(self, maxsize: int):
         self.books = [Book() for _ in range(maxsize)]
         self.last = 0
@@ -21,4 +21,4 @@ class MyBookShelf(Aggregate):
 
     # Aggregate インターフェース?のiteratorメソッドを実装
     def iterator(self) -> Iterator:
-        return MyBookShelfIterator(self)
+        return BookShelfIterator(self)
