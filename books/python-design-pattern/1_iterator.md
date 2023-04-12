@@ -65,12 +65,12 @@ class Book:
 
 ```python
 from book import Book
-from book_shelf_iterator import MyBookShelfIterator
+from book_shelf_iterator import BookShelfIterator
 from iterator import Iterator
 from aggregate import Aggregate
 
 
-class MyBookShelf(Aggregate):
+class BookShelf(Aggregate):
     def __init__(self, maxsize: int):
         self.books = [None] * maxsize
         self.last = 0
@@ -87,7 +87,7 @@ class MyBookShelf(Aggregate):
 
     # Aggregate インターフェース?のiteratorメソッドを実装
     def iterator(self) -> Iterator:
-        return MyBookShelfIterator(self)
+        return BookShelfIterator(self)
 ```
 
 ### BookShelfIterator クラス
@@ -98,7 +98,7 @@ BookShelf（本棚）クラスのスキャンを行うクラス
 from iterator import Iterator
 
 
-class MyBookShelfIterator(Iterator):
+class BookShelfIterator(Iterator):
     def __init__(self, book_shelf):
         self.book_shelf = book_shelf
         self.index = 0
@@ -121,12 +121,12 @@ class MyBookShelfIterator(Iterator):
 本棚に本を追加して、本棚の中身を表示する
 
 ```python
-from book_shelf import MyBookShelf
+from book_shelf import BookShelf
 from book import Book
 
 
 def main():
-    book_shelf = MyBookShelf(4)
+    book_shelf = BookShelf(4)
     book_shelf.append_book(Book("Around the World in 80 Days"))
     book_shelf.append_book(Book("Bible"))
     book_shelf.append_book(Book("Cinderella"))
@@ -140,3 +140,10 @@ def main():
 if __name__ == "__main__":
     main()
 ```
+
+## 練習問題
+
+BookShelf クラスでは、本棚の最大本数を指定しており、それ以上本を追加できませんでしたが、java.util.ArrayList を使って、本棚の最大本数を超えて本を追加できるようにしてください。
+
+この仕様変更で、改修する箇所が BookShelf クラスだけで Main クラスは変更する必要がない。
+これが良いところ？
