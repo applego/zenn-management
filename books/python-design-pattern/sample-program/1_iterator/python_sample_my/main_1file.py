@@ -1,37 +1,3 @@
----
-title: "Iteratorパターン"
----
-
-## サンプルプログラム 1
-
-### できたクラス図
-
-pyreverse で出力した
-
-![](/images/books/python-design-pattern/classes_0412_1111.png)
-
-本の通りにならん。。。
-
-### Aggregate インターフェース
-
-「集合体」を表す
-
-```python
-from abc import ABC, abstractmethod
-from iterator import Iterator
-
-
-class Aggregate(ABC):
-    @abstractmethod
-    def iterator(self) -> Iterator:
-        pass
-```
-
-### Iterator インターフェース
-
-要素の数え上げを行う、ループ変数のようなもの
-
-```python
 from abc import ABC, abstractmethod
 
 
@@ -43,31 +9,20 @@ class Iterator(ABC):
     @abstractmethod
     def next(self) -> object:
         pass
-```
 
-### Book クラス
 
-本を表すクラス
+class Aggregate(ABC):
+    @abstractmethod
+    def iterator(self) -> Iterator:
+        pass
 
-```python
+
 class Book:
     def __init__(self, name):
         self.name = name
 
     def get_name(self):
         return self.name
-```
-
-### BookShelf クラス
-
-本棚を表すクラス
-集合体として扱うために Aggregate インターフェースを実装する
-
-```python
-from book import Book
-from book_shelf_iterator import MyBookShelfIterator
-from iterator import Iterator
-from aggregate import Aggregate
 
 
 class MyBookShelf(Aggregate):
@@ -88,18 +43,10 @@ class MyBookShelf(Aggregate):
     # Aggregate インターフェース?のiteratorメソッドを実装
     def iterator(self) -> Iterator:
         return MyBookShelfIterator(self)
-```
-
-### BookShelfIterator クラス
-
-BookShelf（本棚）クラスのスキャンを行うクラス
-
-```python
-from iterator import Iterator
 
 
 class MyBookShelfIterator(Iterator):
-    def __init__(self, book_shelf):
+    def __init__(self, book_shelf: MyBookShelf):
         self.book_shelf = book_shelf
         self.index = 0
 
@@ -111,18 +58,10 @@ class MyBookShelfIterator(Iterator):
             return False
 
     # Iteratorインターフェース?のnextメソッドを実装
+    def next(self) -> object:
         book = self.book_shelf.get_book_at(self.index)
         self.index += 1
         return book
-```
-
-### Main
-
-本棚に本を追加して、本棚の中身を表示する
-
-```python
-from book_shelf import MyBookShelf
-from book import Book
 
 
 def main():
@@ -139,4 +78,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-```

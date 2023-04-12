@@ -6,7 +6,7 @@ from aggregate import Aggregate
 
 class MyBookShelf(Aggregate):
     def __init__(self, maxsize: int):
-        self.books = [None] * maxsize
+        self.books = [Book() for _ in range(maxsize)]
         self.last = 0
 
     def get_book_at(self, index: int) -> Book:
